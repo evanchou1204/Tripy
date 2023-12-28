@@ -84,7 +84,7 @@
 		  class="size-a-1 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn1 trans-02"
 		  onclick="createPlan()"
 		>
-		  <i class="fa fa-plus m-r-2"> 新增收藏清單</i>
+		  <i class="fa fa-plus m-r-2"> 新增旅遊行程</i>
 		</button>
 	</div>
 
@@ -342,7 +342,7 @@
 							"start": startDate,
 							"end": endDate,
 							"Collaborators": collaboratorArray.map(collaborator => ({ collaborator })),
-							"user_id":"1"
+							"user_id":user_id
 						};
 
 						// 將JSON格式轉換成字串
@@ -438,7 +438,7 @@
 						var data_object = {
 							"id": planID,
 							"name": planName,
-							"user_id":"1"
+							"user_id":user_id 
 						};
 
 						// 將JSON格式轉換成字串

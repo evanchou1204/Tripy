@@ -136,13 +136,18 @@ public class ItineraryItemHelper {
   
             /** 取得所需之參數 */
             int scene_id = iti.getScene().getId();
+            java.util.Date utilDate = iti.getDate(); // Assuming iti is an object of type java.util.Date
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            // pres.setDate(3, sqlDate);
+
             
             /** 將參數回填至SQL指令當中 */
             pres = conn.prepareStatement(sql);
             pres.setInt(1, itineraryList_id);
             pres.setInt(2, scene_id);
-            pres.setDate(3, (java.sql.Date)iti.getDate());
+            pres.setDate(3, sqlDate);
             pres.setInt(4, iti.getDate_order());
+          
             
             /** 執行新增之SQL指令並記錄影響之行數 */
             row = pres.executeUpdate();
@@ -219,7 +224,9 @@ public class ItineraryItemHelper {
                 /** 將 ResultSet 之資料取出 */
                 int itinerary_Id = rs.getInt("Itinerary_Id");
                 int scene_id = rs.getInt("Scene");
-                java.util.Date date = rs.getDate("Itinerary_Day");
+                java.sql.Date  date = rs.getDate("Itinerary_Day");
+                
+
                 int order = rs.getInt("Itinerary_Day_Order");
                 
                 /** 將每一筆收藏景點資料產生一名新collectionItem物件 */
@@ -287,7 +294,7 @@ public class ItineraryItemHelper {
             	/** 將 ResultSet 之資料取出 */
                 int itinerary_Id = rs.getInt("Itinerary_Id");
                 int scene_id = rs.getInt("Scene");
-                java.util.Date date = rs.getDate("Itinerary_Day");
+                java.sql.Date date = rs.getDate("Itinerary_Day");
                 int order = rs.getInt("Itinerary_Day_Order");
                 
                 /** 將每一筆收藏景點資料產生一名新collectionItem物件 */
@@ -353,7 +360,7 @@ public class ItineraryItemHelper {
             	/** 將 ResultSet 之資料取出 */
                 int itinerary_Id = rs.getInt("Itinerary_Id");
                 int scene_id = rs.getInt("Scene");
-                java.util.Date date = rs.getDate("Itinerary_Day");
+                java.sql.Date date = rs.getDate("Itinerary_Day");
                 int order = rs.getInt("Itinerary_Day_Order");
                 
                 /** 將每一筆收藏景點資料產生一名新collectionItem物件 */
