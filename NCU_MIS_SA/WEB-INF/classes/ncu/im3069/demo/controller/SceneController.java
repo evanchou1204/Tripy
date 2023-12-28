@@ -49,15 +49,15 @@ public class SceneController extends HttpServlet {
         String city = jso.getString("city");
         int city_id = Cith.getCityIdByCityName(city);
         
-       String image = jso.getString("images");
+       //String image = jso.getString("images");
 
         ArrayList<String> images = new ArrayList<String>();
-        if(!image.isEmpty()) {
-            String[] images_ = image.split(","); 
-            for (int i = 0; i < images_.length; i++) {
-            	images.add(images_[i]);
-            }
-        }
+//        if(!image.isEmpty()) {
+//            String[] images_ = image.split(","); 
+//            for (int i = 0; i < images_.length; i++) {
+//            	images.add(images_[i]);
+//            }
+//        }
         /** 建立一個新的會員物件 */
         Scene m = new Scene(name, address, detail, opentime, phone, images);
         
@@ -194,6 +194,7 @@ public class SceneController extends HttpServlet {
         JsonReader jsr = new JsonReader(request);
         JSONObject jso = jsr.getObject();
         
+        
         /** 取出經解析到JSONObject之Request參數 */
         int id = jso.getInt("id");
         String address = jso.getString("address");
@@ -210,6 +211,7 @@ public class SceneController extends HttpServlet {
             }
         }
         
+              
         /** 建立一個新的會員物件 */
         Scene m = new Scene(id, name, address, detail, opentime, phone, images);
         
